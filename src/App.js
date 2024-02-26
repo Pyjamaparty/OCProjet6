@@ -1,27 +1,39 @@
 import logo from './resources/images/LOGO.png';
+import logoWhite from './resources/images/LOGO-white.png';
 import './App.css';
 import React from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-
-const Home = () => <div>Accueil</div>;
-const About = () => <div>À Propos</div>;
+import AboutPage from './AboutPage';
+import Location from './Location';
+import ErrorPage from './ErrorPage';
+import Home from './Home';
 
 function App() {
   return (
-    <header>
-      <img src={logo} alt="Logo" />
-      <nav>
-        <ul class="nav-list">
-          <li><Link to="/">Accueil</Link></li>
-          <li><Link to="/about">À propos</Link></li>
-        </ul>
-      </nav>
-
+    <main>
+      <header>
+        <img src={logo} alt="Logo" />
+        <nav>
+          <ul className="nav-list">
+            <li><Link to="/">Accueil</Link></li>
+            <li><Link to="/about">À propos</Link></li>
+          </ul>
+        </nav>
+      </header>
       <Routes>
-        <Route path="/about" component={About} />
-        <Route path="/" component={Home} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/location" element={<Location />} />
+        <Route path="/error" element={<ErrorPage />} />
       </Routes>
-    </header>
+
+      <footer>
+        <div className='footer-content'>
+          <img src={logoWhite} alt="logo" />
+          <p>© 2020 Kasa. All rights reserved</p>
+        </div>
+      </footer>
+    </main>
   );
 }
 
